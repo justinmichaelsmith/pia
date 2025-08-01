@@ -1,15 +1,21 @@
-(async () => {
-  const docClone = document.documentElement.cloneNode(true);
-  const html = '<!DOCTYPE html>\n' + docClone.outerHTML;
-  const title = document.title || 'Untitled Page';
-  const timestamp = new Date().toISOString();
+// Runs in page, serializes the DOM, then asks background to save it.
+(() => {
+  try {
+    const docClone = document.documentElement.cloneNode(true);
+    const html = '<!DOCTYPE html>\n' + docClone.outerHTML;
+    const title = document.title || 'Untitled Page';
+    const url = location.href;
 
-  const pageData = { html, title, timestamp };
+    chrome.runtime.sendMessage({
+      type: 'SAVE_PAGE',
+      payload: { html, title, url }
+    }, () => {
+      // optional callback
+    });
 
-  const db = await getDb();
-  const tx = db.transaction('pages', 'readwrite');
-  tx.objectStore('pages').add(pageData);
-  tx.commit();
-
-  alert('Page saved for offline viewing.');
+    alert('WebNest: page queued for save.');
+  } catch (e) {
+    alert('WebNest: failed to save this page.');
+    console.error(e);
+  }
 })();
