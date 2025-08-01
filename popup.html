@@ -1,13 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta charset="utf-8">
   <title>WebNest</title>
   <link rel="stylesheet" href="popup.css">
 </head>
 <body>
-  <h1>Saved Pages</h1>
+  <h1>WebNest</h1>
+  <div class="actions">
+    <button id="savePage">Save Page</button>
+    <button id="saveSite">Save Site</button>
+  </div>
+
+  <h2>Saved Pages</h2>
   <ul id="pageList"></ul>
-  <script src="storage.js"></script>
+
+  <h2>Saved Sites</h2>
+  <ul id="siteList"></ul>
+
   <script src="popup.js"></script>
 </body>
 </html>
