@@ -1,10 +1,10 @@
-# WebNest – Offline Page Saver Extension
+# Backburner – Your personal internet archive
 
-WebNest is a Chrome extension that lets you save web pages for offline viewing with a single click.
+Backburner is a Chrome extension that lets you save web pages for offline viewing with a single click.
 
 ## Features
 
-- One-click saving of the current page
+- One-click saving of the current site
 - Stores pages in local IndexedDB
 - Lists saved pages with title and timestamp
 - Offline viewer with iframe-based display
